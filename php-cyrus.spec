@@ -7,7 +7,7 @@
 Summary:	An extension which eases the manipulation of Cyrus IMAP servers for PHP
 Name:		php-%{modname}
 Version:	1.0
-Release:	%mkrel 7
+Release:	%mkrel 8
 Group:		Development/PHP
 License:	PHP License
 URL:		http://pecl.php.net/package/cyrus
@@ -31,6 +31,15 @@ An extension which eases the manipulation of Cyrus IMAP servers.
 cp %{SOURCE1} %{inifile}
 
 %build
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
+export FFLAGS="%{optflags}"
+
+%if %mdkversion >= 200710
+export CFLAGS="$CFLAGS -fstack-protector"
+export CXXFLAGS="$CXXFLAGS -fstack-protector"
+export FFLAGS="$FFLAGS -fstack-protector"
+%endif
 
 #%{_usrsrc}/php4-devel/buildext %{modname} cyrus.c "-lsasl2 -lcyrus -lcyrus_min" \
 #    "-DCOMPILE_DL_CYRUS -DHAVE_CYRUS -I%{_includedir}/sasl"
@@ -65,5 +74,3 @@ install -m0755 %{soname} %{buildroot}%{_libdir}/php/extensions/
 %doc CREDITS README*
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/php.d/%{inifile}
 %attr(0755,root,root) %{_libdir}/php/extensions/%{soname}
-
-
