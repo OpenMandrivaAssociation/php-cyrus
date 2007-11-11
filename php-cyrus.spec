@@ -7,7 +7,7 @@
 Summary:	An extension which eases the manipulation of Cyrus IMAP servers for PHP
 Name:		php-%{modname}
 Version:	1.0
-Release:	%mkrel 9
+Release:	%mkrel 10
 Group:		Development/PHP
 License:	PHP License
 URL:		http://pecl.php.net/package/cyrus
@@ -56,6 +56,18 @@ EOF
 
 install -m0644 %{inifile} %{buildroot}%{_sysconfdir}/php.d/%{inifile}
 install -m0755 %{soname} %{buildroot}%{_libdir}/php/extensions/
+
+%post
+if [ -f /var/lock/subsys/httpd ]; then
+    %{_initrddir}/httpd restart >/dev/null || :
+fi
+
+%postun
+if [ "$1" = "0" ]; then
+    if [ -f /var/lock/subsys/httpd ]; then
+	%{_initrddir}/httpd restart >/dev/null || :
+    fi
+fi
 
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
