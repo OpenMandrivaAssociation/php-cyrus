@@ -18,6 +18,7 @@ Requires:	php-cli >= 3:5.2.0
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	cyrus-imapd-devel
 BuildRequires:	libsasl-devel
+BuildRoot:	%{_tmppath}/%{name}-root
 
 %description
 An extension which eases the manipulation of Cyrus IMAP servers.
