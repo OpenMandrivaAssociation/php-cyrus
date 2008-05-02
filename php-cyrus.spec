@@ -7,7 +7,7 @@
 Summary:	An extension which eases the manipulation of Cyrus IMAP servers for PHP
 Name:		php-%{modname}
 Version:	1.0
-Release:	%mkrel 11
+Release:	%mkrel 12
 Group:		Development/PHP
 License:	PHP License
 URL:		http://pecl.php.net/package/cyrus
@@ -18,7 +18,7 @@ Requires:	php-cli >= 3:5.2.0
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	cyrus-imapd-devel
 BuildRequires:	libsasl-devel
-BuildRoot:	%{_tmppath}/%{name}-root
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 An extension which eases the manipulation of Cyrus IMAP servers.
