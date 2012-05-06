@@ -14,6 +14,7 @@ URL:		http://pecl.php.net/package/cyrus
 Source0:	%{modname}-%{version}.tar.bz2
 Source1:	%{modname}.ini
 Patch0:		cyrus-1.0-lib64.diff
+Patch1:		cyrus-1.0-php54x.diff
 Requires:	php-cli >= 3:5.2.0
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	cyrus-imapd-devel
@@ -27,6 +28,7 @@ An extension which eases the manipulation of Cyrus IMAP servers.
 
 %setup -q -n %{modname}-%{version}
 %patch0 -p0
+%patch1 -p0
 
 cp %{SOURCE1} %{inifile}
 
