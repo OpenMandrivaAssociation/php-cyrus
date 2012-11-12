@@ -1,0 +1,36 @@
+--- config.m4	2003-05-17 16:34:07.000000000 +0200
++++ config.m4.oden	2004-12-12 09:35:00.228522592 +0100
+@@ -16,7 +16,7 @@
+   for i in $PHP_CYRUS /usr/local /usr; do
+     if test -r $i/include/cyrus/imclient.h && test "$found_cyrus" = "no"; then
+       PHP_ADD_INCLUDE($i/include)
+-      PHP_ADD_LIBRARY_WITH_PATH(cyrus, $i/lib, CYRUS_SHARED_LIBADD)
++      PHP_ADD_LIBRARY_WITH_PATH(cyrus, $i/$PHP_LIBDIR, CYRUS_SHARED_LIBADD)
+       found_cyrus=yes
+       CYRUS_INCPATH=$i/include
+       break 2
+@@ -50,10 +50,10 @@
+     fi
+ 
+     if test "$found_sasl" = "yes"; then
+-      if test -f $i/lib/libsasl2.a || test -f $i/lib/libsasl2.$SHLIB_SUFFIX_NAME; then
+-        PHP_ADD_LIBRARY_WITH_PATH(sasl2, $i/lib, CYRUS_SHARED_LIBADD)
++      if test -f $i/$PHP_LIBDIR/libsasl2.a || test -f $i/$PHP_LIBDIR/libsasl2.$SHLIB_SUFFIX_NAME; then
++        PHP_ADD_LIBRARY_WITH_PATH(sasl2, $i/$PHP_LIBDIR, CYRUS_SHARED_LIBADD)
+       else
+-        PHP_ADD_LIBRARY_WITH_PATH(sasl, $i/lib, CYRUS_SHARED_LIBADD)
++        PHP_ADD_LIBRARY_WITH_PATH(sasl, $i/$PHP_LIBDIR, CYRUS_SHARED_LIBADD)
+       fi
+       break 2
+     fi
+@@ -70,8 +70,8 @@
+   if test "$PHP_OPENSSL" = "no"; then
+     for i in $PHP_CYRUS /usr/local /usr; do
+       if test -r $i/include/openssl/ssl.h; then
+-        PHP_ADD_LIBRARY_WITH_PATH(ssl, $i/lib, CYRUS_SHARED_LIBADD)
+-        PHP_ADD_LIBRARY_WITH_PATH(crypto, $i/lib, CYRUS_SHARED_LIBADD)
++        PHP_ADD_LIBRARY_WITH_PATH(ssl, $i/$PHP_LIBDIR, CYRUS_SHARED_LIBADD)
++        PHP_ADD_LIBRARY_WITH_PATH(crypto, $i/$PHP_LIBDIR, CYRUS_SHARED_LIBADD)
+         break 2
+       fi
+     done

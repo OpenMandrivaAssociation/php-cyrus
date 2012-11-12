@@ -1,0 +1,11 @@
+--- cyrus.c	2003-05-17 16:34:07.000000000 +0200
++++ cyrus.c.oden	2012-05-06 14:09:19.988914731 +0200
+@@ -37,7 +37,7 @@
+ static int le_cyrus;
+ #define le_cyrus_name "Cyrus IMAP connection"
+ 
+-function_entry cyrus_functions[] = {
++zend_function_entry cyrus_functions[] = {
+ 	PHP_FE(cyrus_connect,		NULL)
+ 	PHP_FE(cyrus_authenticate,	NULL)
+ 	PHP_FE(cyrus_bind,			NULL)
