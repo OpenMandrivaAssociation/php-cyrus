@@ -10,7 +10,7 @@ Version:	1.0
 Release:	33
 Group:		Development/PHP
 License:	PHP License
-URL:		http://pecl.php.net/package/cyrus
+URL:		https://pecl.php.net/package/cyrus
 Source0:	%{modname}-%{version}.tar.bz2
 Source1:	%{modname}.ini
 Patch0:		cyrus-1.0-lib64.diff
