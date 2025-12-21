@@ -16,6 +16,11 @@ Source1:	%{modname}.ini
 Patch0:		cyrus-1.0-lib64.diff
 Patch1:		cyrus-1.0-php54x.diff
 Requires:	php-cli >= 3:5.2.0
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	php-devel >= 3:5.2.0
 BuildRequires:	cyrus-imapd-devel
 BuildRequires:	libsasl-devel
